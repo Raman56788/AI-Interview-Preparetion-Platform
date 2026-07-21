@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav className="flex justify-between items-center px-8 py-4 bg-white shadow">
-      <h2 className="text-xl font-bold text-blue-600">
+    <nav className="bg-green-600 text-white px-8 py-4 flex justify-between items-center">
+      <h1 className="text-2xl font-bold">
         AI Interview Prep
-      </h2>
+      </h1>
 
       <div className="flex gap-6">
         <Link to="/">Home</Link>
