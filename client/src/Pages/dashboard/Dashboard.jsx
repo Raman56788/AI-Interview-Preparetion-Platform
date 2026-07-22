@@ -10,14 +10,17 @@ import StatsCard from "../../components/dashboard/StatsCard";
 import QuickActionCard from "../../components/dashboard/QuickActionCard";
 import RecentActivity from "../../components/dashboard/RecentActivity";
 
+
 const Dashboard = () => {
+
   return (
     <div className="min-h-screen bg-gray-100 p-6">
 
+      {/* Welcome Section */}
       <WelcomeBanner name="Raman" />
 
-      {/* Stats */}
 
+      {/* Statistics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mt-8">
 
         <StatsCard
@@ -28,6 +31,7 @@ const Dashboard = () => {
           color="green"
         />
 
+
         <StatsCard
           title="Resume Score"
           value="88%"
@@ -36,6 +40,7 @@ const Dashboard = () => {
           color="blue"
         />
 
+
         <StatsCard
           title="Coding Score"
           value="84%"
@@ -43,6 +48,7 @@ const Dashboard = () => {
           icon={<FaCode />}
           color="purple"
         />
+
 
         <StatsCard
           title="Overall Rank"
@@ -54,9 +60,11 @@ const Dashboard = () => {
 
       </div>
 
+
       {/* Quick Actions */}
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+
 
         <QuickActionCard
           title="Start Interview"
@@ -66,32 +74,40 @@ const Dashboard = () => {
           color="green"
         />
 
+
         <QuickActionCard
           title="Resume Analyzer"
-          description="Improve your ATS Score"
+          description="Improve your ATS score"
           icon={<FaFileAlt />}
           to="/resume"
           color="blue"
         />
 
+
         <QuickActionCard
           title="Coding Practice"
-          description="Solve coding challenges"
+          description="Solve coding problems"
           icon={<FaCode />}
           to="/coding"
           color="purple"
         />
 
+
       </div>
+
 
       {/* Activity */}
 
       <div className="mt-8">
+
         <RecentActivity />
+
       </div>
+
 
     </div>
   );
 };
+
 
 export default Dashboard;
