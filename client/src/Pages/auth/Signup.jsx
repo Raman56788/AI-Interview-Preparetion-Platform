@@ -1,50 +1,83 @@
-function Signup() {
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+
+import AuthLayout from "../../components/auth/AuthLayout";
+import InputField from "../../components/auth/InputField";
+import PasswordInput from "../../components/auth/PasswordInput";
+import SocialLogin from "../../components/auth/SocialLogin";
+
+const Signup = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log("Signup Data:", data);
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-green-50">
-      <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
+    <AuthLayout
+      title="Create Account 🚀"
+      subtitle="Start your AI Interview preparation today"
+    >
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <InputField
+          label="Full Name"
+          type="text"
+          placeholder="Enter your full name"
+          register={register}
+          name="name"
+          error={errors.name}
+        />
 
-        <h1 className="text-3xl font-bold text-center text-green-600">
+        <InputField
+          label="Email"
+          type="email"
+          placeholder="Enter your email"
+          register={register}
+          name="email"
+          error={errors.email}
+        />
+
+        <PasswordInput
+          label="Password"
+          placeholder="Create a password"
+          register={register}
+          name="password"
+          error={errors.password}
+        />
+
+        <PasswordInput
+          label="Confirm Password"
+          placeholder="Confirm your password"
+          register={register}
+          name="confirmPassword"
+          error={errors.confirmPassword}
+        />
+
+        <button
+          type="submit"
+          className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold transition"
+        >
           Create Account
-        </h1>
+        </button>
+      </form>
 
-        <p className="text-center text-gray-500 mt-2">
-          Join AI Interview Preparation Platform
-        </p>
+      <SocialLogin />
 
-        <form className="mt-8">
-
-          <input
-            type="text"
-            placeholder="Full Name"
-            className="w-full border rounded-lg p-3 mb-4"
-          />
-
-          <input
-            type="email"
-            placeholder="Email"
-            className="w-full border rounded-lg p-3 mb-4"
-          />
-
-          <input
-            type="password"
-            placeholder="Password"
-            className="w-full border rounded-lg p-3 mb-4"
-          />
-
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            className="w-full border rounded-lg p-3 mb-6"
-          />
-
-          <button className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg">
-            Create Account
-          </button>
-
-        </form>
-      </div>
-    </div>
+      <p className="text-center mt-6 text-gray-600">
+        Already have an account?{" "}
+        <Link
+          to="/login"
+          className="text-green-600 font-semibold hover:underline"
+        >
+          Login
+        </Link>
+      </p>
+    </AuthLayout>
   );
-}
+};
 
 export default Signup;

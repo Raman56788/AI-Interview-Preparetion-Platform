@@ -1,56 +1,87 @@
-function Login() {
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+
+import AuthLayout from "../../components/auth/AuthLayout";
+import InputField from "../../components/auth/InputField";
+import PasswordInput from "../../components/auth/PasswordInput";
+import SocialLogin from "../../components/auth/SocialLogin";
+
+const Login = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log("Login Data:", data);
+
+    // API call later
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-green-50">
-      <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
+    <AuthLayout
+      title="Welcome Back 👋"
+      subtitle="Login to continue your AI Interview journey"
+    >
+      <form onSubmit={handleSubmit(onSubmit)}>
 
-        <h1 className="text-3xl font-bold text-center text-green-600">
-          Welcome Back
-        </h1>
+        <InputField
+          label="Email"
+          type="email"
+          placeholder="Enter your email"
+          register={register}
+          name="email"
+          error={errors.email}
+        />
 
-        <p className="text-center text-gray-500 mt-2">
-          Login to AI Interview Preparation Platform
-        </p>
+        <PasswordInput
+          label="Password"
+          placeholder="Enter your password"
+          register={register}
+          name="password"
+          error={errors.password}
+        />
 
-        <form className="mt-8">
+        <div className="flex justify-between items-center mb-6">
 
-          <label className="block text-gray-700 mb-2">
-            Email
+          <label className="flex items-center gap-2 text-sm">
+            <input type="checkbox" />
+            Remember Me
           </label>
 
-          <input
-            type="email"
-            placeholder="Enter your email"
-            className="w-full border rounded-lg p-3 mb-5 focus:outline-none focus:ring-2 focus:ring-green-500"
-          />
-
-          <label className="block text-gray-700 mb-2">
-            Password
-          </label>
-
-          <input
-            type="password"
-            placeholder="Enter your password"
-            className="w-full border rounded-lg p-3 mb-6 focus:outline-none focus:ring-2 focus:ring-green-500"
-          />
-
-          <button
-            className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg transition"
+          <Link
+            to="/forgot-password"
+            className="text-green-600 hover:underline text-sm"
           >
-            Login
-          </button>
+            Forgot Password?
+          </Link>
 
-          <p className="text-center mt-6 text-gray-600">
-            Don't have an account?
-            <span className="text-green-600 font-semibold cursor-pointer">
-              {" "}
-              Signup
-            </span>
-          </p>
+        </div>
 
-        </form>
-      </div>
-    </div>
+        <button
+          type="submit"
+          className="w-full bg-green-600 hover:bg-green-700 text-white rounded-lg py-3 font-semibold transition"
+        >
+          Login
+        </button>
+
+      </form>
+
+      <SocialLogin />
+
+      <p className="text-center mt-6 text-gray-600">
+        Don't have an account?{" "}
+        <Link
+          to="/signup"
+          className="text-green-600 font-semibold hover:underline"
+        >
+          Sign Up
+        </Link>
+      </p>
+
+    </AuthLayout>
   );
-}
+};
 
 export default Login;
