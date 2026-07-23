@@ -1,36 +1,102 @@
+import { useState } from "react";
+
 import Sidebar from "./Sidebar";
 import TopNavbar from "./TopNavbar";
 
+
 const ProtectedLayout = ({ children }) => {
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+
   return (
-    <div className="flex min-h-screen bg-gray-100">
+
+    <div
+      className="
+        flex
+        min-h-screen
+        bg-gray-100
+        overflow-x-hidden
+      "
+    >
+
 
       {/* Sidebar */}
 
-      <Sidebar />
+      <Sidebar
+
+        sidebarOpen={sidebarOpen}
+
+        setSidebarOpen={setSidebarOpen}
+
+      />
 
 
-      {/* Main Area */}
 
-      <div className="flex-1 flex flex-col">
+      {/* Mobile Overlay */}
 
-        {/* Top Navbar */}
+      {
+        sidebarOpen && (
 
-        <TopNavbar />
+          <div
+
+            className="
+              fixed
+              inset-0
+              bg-black
+              bg-opacity-40
+              z-40
+              md:hidden
+            "
+
+            onClick={() => setSidebarOpen(false)}
+
+          />
+
+        )
+      }
 
 
-        {/* Page Content */}
 
-        <main className="p-6">
+
+      {/* Main Content */}
+
+      <div
+        className="
+          flex-1
+          flex
+          flex-col
+        "
+      >
+
+
+        <TopNavbar
+
+          setSidebarOpen={setSidebarOpen}
+
+        />
+
+
+
+        <main
+          className="
+            p-6
+            w-full
+          "
+        >
 
           {children}
 
         </main>
 
+
       </div>
 
+
     </div>
+
   );
+
 };
 
 
