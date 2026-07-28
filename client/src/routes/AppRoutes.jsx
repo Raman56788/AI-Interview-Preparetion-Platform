@@ -8,6 +8,7 @@ import Login from "../pages/auth/Login";
 import Signup from "../pages/auth/Signup";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Analytics from "../pages/analytics/Analytics";
+import Interview from "../pages/interview/Interview";
 
 
 function AppRoutes() {
@@ -19,7 +20,8 @@ function AppRoutes() {
     location.pathname === "/login" ||
     location.pathname === "/signup" ||
     location.pathname === "/dashboard" ||
-    location.pathname === "/analytics";
+    location.pathname === "/analytics" ||
+    location.pathname === "/interview";
 
 
 
@@ -36,24 +38,24 @@ function AppRoutes() {
 
         {/* Home */}
 
-        <Route 
-          path="/" 
-          element={<Home />} 
+        <Route
+          path="/"
+          element={<Home />}
         />
 
 
 
         {/* Authentication */}
 
-        <Route 
-          path="/login" 
-          element={<Login />} 
+        <Route
+          path="/login"
+          element={<Login />}
         />
 
 
-        <Route 
-          path="/signup" 
-          element={<Signup />} 
+        <Route
+          path="/signup"
+          element={<Signup />}
         />
 
 
@@ -93,6 +95,28 @@ function AppRoutes() {
             <ProtectedLayout>
 
               <Analytics />
+
+            </ProtectedLayout>
+
+          }
+
+        />
+
+
+
+
+
+        {/* AI Interview */}
+
+        <Route
+
+          path="/interview"
+
+          element={
+
+            <ProtectedLayout>
+
+              <Interview />
 
             </ProtectedLayout>
 
