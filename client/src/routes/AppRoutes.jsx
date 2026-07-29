@@ -8,10 +8,14 @@ import Login from "../pages/auth/Login";
 import Signup from "../pages/auth/Signup";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Analytics from "../pages/analytics/Analytics";
+
 import Interview from "../pages/interview/Interview";
+import InterviewSetup from "../pages/interview/InterviewSetup";
+import InterviewRoom from "../pages/interview/InterviewRoom";
 
 
 function AppRoutes() {
+
 
   const location = useLocation();
 
@@ -21,11 +25,15 @@ function AppRoutes() {
     location.pathname === "/signup" ||
     location.pathname === "/dashboard" ||
     location.pathname === "/analytics" ||
-    location.pathname === "/interview";
+    location.pathname === "/interview" ||
+    location.pathname === "/interview/setup" ||
+    location.pathname === "/interview/room";
+
 
 
 
   return (
+
     <>
 
 
@@ -36,12 +44,15 @@ function AppRoutes() {
       <Routes>
 
 
+
         {/* Home */}
 
         <Route
           path="/"
           element={<Home />}
         />
+
+
 
 
 
@@ -57,6 +68,7 @@ function AppRoutes() {
           path="/signup"
           element={<Signup />}
         />
+
 
 
 
@@ -84,6 +96,8 @@ function AppRoutes() {
 
 
 
+
+
         {/* Analytics */}
 
         <Route
@@ -106,7 +120,9 @@ function AppRoutes() {
 
 
 
-        {/* AI Interview */}
+
+
+        {/* AI Interview Dashboard */}
 
         <Route
 
@@ -126,11 +142,64 @@ function AppRoutes() {
 
 
 
+
+
+
+
+
+        {/* Interview Setup */}
+
+        <Route
+
+          path="/interview/setup"
+
+          element={
+
+            <ProtectedLayout>
+
+              <InterviewSetup />
+
+            </ProtectedLayout>
+
+          }
+
+        />
+
+
+
+
+
+
+
+
+        {/* Interview Room */}
+
+        <Route
+
+          path="/interview/room"
+
+          element={
+
+            <ProtectedLayout>
+
+              <InterviewRoom />
+
+            </ProtectedLayout>
+
+          }
+
+        />
+
+
+
+
       </Routes>
 
 
     </>
+
   );
+
 }
 
 
