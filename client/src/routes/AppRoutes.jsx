@@ -13,12 +13,11 @@ import Interview from "../pages/interview/Interview";
 import InterviewSetup from "../pages/interview/InterviewSetup";
 import InterviewRoom from "../pages/interview/InterviewRoom";
 
+import Resume from "../pages/resume/Resume";
 
 function AppRoutes() {
 
-
   const location = useLocation();
-
 
   const hideNavbar =
     location.pathname === "/login" ||
@@ -27,23 +26,15 @@ function AppRoutes() {
     location.pathname === "/analytics" ||
     location.pathname === "/interview" ||
     location.pathname === "/interview/setup" ||
-    location.pathname === "/interview/room";
-
-
-
+    location.pathname === "/interview/room" ||
+    location.pathname === "/resume";
 
   return (
-
     <>
-
 
       {!hideNavbar && <Navbar />}
 
-
-
       <Routes>
-
-
 
         {/* Home */}
 
@@ -52,10 +43,6 @@ function AppRoutes() {
           element={<Home />}
         />
 
-
-
-
-
         {/* Authentication */}
 
         <Route
@@ -63,144 +50,82 @@ function AppRoutes() {
           element={<Login />}
         />
 
-
         <Route
           path="/signup"
           element={<Signup />}
         />
 
-
-
-
-
-
         {/* Dashboard */}
 
         <Route
-
           path="/dashboard"
-
           element={
-
             <ProtectedLayout>
-
               <Dashboard />
-
             </ProtectedLayout>
-
           }
-
         />
-
-
-
-
-
-
 
         {/* Analytics */}
 
         <Route
-
           path="/analytics"
-
           element={
-
             <ProtectedLayout>
-
               <Analytics />
-
             </ProtectedLayout>
-
           }
-
         />
 
-
-
-
-
-
-
-        {/* AI Interview Dashboard */}
+        {/* AI Interview */}
 
         <Route
-
           path="/interview"
-
           element={
-
             <ProtectedLayout>
-
               <Interview />
-
             </ProtectedLayout>
-
           }
-
         />
-
-
-
-
-
-
-
 
         {/* Interview Setup */}
 
         <Route
-
           path="/interview/setup"
-
           element={
-
             <ProtectedLayout>
-
               <InterviewSetup />
-
             </ProtectedLayout>
-
           }
-
         />
-
-
-
-
-
-
-
 
         {/* Interview Room */}
 
         <Route
-
           path="/interview/room"
-
           element={
-
             <ProtectedLayout>
-
               <InterviewRoom />
-
             </ProtectedLayout>
-
           }
-
         />
 
+        {/* Resume Analyzer */}
 
-
+        <Route
+          path="/resume"
+          element={
+            <ProtectedLayout>
+              <Resume />
+            </ProtectedLayout>
+          }
+        />
 
       </Routes>
 
-
     </>
-
   );
 
 }
-
 
 export default AppRoutes;
