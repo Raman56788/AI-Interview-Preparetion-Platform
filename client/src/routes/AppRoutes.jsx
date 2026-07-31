@@ -16,10 +16,13 @@ import InterviewRoom from "../pages/interview/InterviewRoom";
 import Resume from "../pages/resume/Resume";
 import CodingPractice from "../pages/coding/CodingPractice";
 import Profile from "../pages/profile/Profile";
+import Settings from "../pages/settings/Settings";
+
 
 function AppRoutes() {
 
   const location = useLocation();
+
 
   const hideNavbar =
     location.pathname === "/login" ||
@@ -31,14 +34,21 @@ function AppRoutes() {
     location.pathname === "/interview/room" ||
     location.pathname === "/resume" ||
     location.pathname === "/coding" ||
-    location.pathname === "/profile";
+    location.pathname === "/profile" ||
+    location.pathname === "/settings";
+
+
 
   return (
+
     <>
 
       {!hideNavbar && <Navbar />}
 
+
+
       <Routes>
+
 
         {/* Home */}
 
@@ -47,6 +57,8 @@ function AppRoutes() {
           element={<Home />}
         />
 
+
+
         {/* Authentication */}
 
         <Route
@@ -54,10 +66,13 @@ function AppRoutes() {
           element={<Login />}
         />
 
+
         <Route
           path="/signup"
           element={<Signup />}
         />
+
+
 
         {/* Dashboard */}
 
@@ -70,6 +85,8 @@ function AppRoutes() {
           }
         />
 
+
+
         {/* Analytics */}
 
         <Route
@@ -80,6 +97,8 @@ function AppRoutes() {
             </ProtectedLayout>
           }
         />
+
+
 
         {/* AI Interview */}
 
@@ -92,6 +111,8 @@ function AppRoutes() {
           }
         />
 
+
+
         {/* Interview Setup */}
 
         <Route
@@ -102,6 +123,8 @@ function AppRoutes() {
             </ProtectedLayout>
           }
         />
+
+
 
         {/* Interview Room */}
 
@@ -114,6 +137,8 @@ function AppRoutes() {
           }
         />
 
+
+
         {/* Resume Analyzer */}
 
         <Route
@@ -124,6 +149,8 @@ function AppRoutes() {
             </ProtectedLayout>
           }
         />
+
+
 
         {/* Coding Practice */}
 
@@ -136,6 +163,8 @@ function AppRoutes() {
           }
         />
 
+
+
         {/* Profile */}
 
         <Route
@@ -147,11 +176,28 @@ function AppRoutes() {
           }
         />
 
+
+
+        {/* Settings */}
+
+        <Route
+          path="/settings"
+          element={
+            <ProtectedLayout>
+              <Settings />
+            </ProtectedLayout>
+          }
+        />
+
+
       </Routes>
 
+
     </>
+
   );
 
 }
+
 
 export default AppRoutes;
