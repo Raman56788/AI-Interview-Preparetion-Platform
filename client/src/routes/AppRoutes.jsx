@@ -15,6 +15,7 @@ import InterviewRoom from "../pages/interview/InterviewRoom";
 
 import Resume from "../pages/resume/Resume";
 import CodingPractice from "../pages/coding/CodingPractice";
+import Profile from "../pages/profile/Profile";
 
 function AppRoutes() {
 
@@ -29,7 +30,8 @@ function AppRoutes() {
     location.pathname === "/interview/setup" ||
     location.pathname === "/interview/room" ||
     location.pathname === "/resume" ||
-    location.pathname === "/coding";
+    location.pathname === "/coding" ||
+    location.pathname === "/profile";
 
   return (
     <>
@@ -130,6 +132,17 @@ function AppRoutes() {
           element={
             <ProtectedLayout>
               <CodingPractice />
+            </ProtectedLayout>
+          }
+        />
+
+        {/* Profile */}
+
+        <Route
+          path="/profile"
+          element={
+            <ProtectedLayout>
+              <Profile />
             </ProtectedLayout>
           }
         />
