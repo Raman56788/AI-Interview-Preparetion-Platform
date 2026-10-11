@@ -1,22 +1,24 @@
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
+
 import Navbar from "../components/layout/Navbar";
 import ProtectedLayout from "../components/layout/ProtectedLayout";
 
-// ================= Public Pages =================
+// Public Pages
 import Home from "../pages/home/Home";
 import Login from "../pages/auth/Login";
 import Signup from "../pages/auth/Signup";
 
-// ================= Dashboard Pages =================
+// Protected Pages
 import Dashboard from "../pages/dashboard/Dashboard";
 import Analytics from "../pages/analytics/Analytics";
 import Profile from "../pages/profile/Profile";
 import Resume from "../pages/resume/Resume";
+import Settings from "../pages/settings/Settings";
 
-// ================= Coding Practice =================
+// Coding Practice
 import CodingPractice from "../pages/coding/CodingPractice";
 
-// ================= Interview Pages =================
+// Interview Pages
 import Interview from "../pages/interview/Interview";
 import InterviewSetup from "../pages/interview/InterviewSetup";
 import InterviewRoom from "../pages/interview/InterviewRoom";
@@ -25,7 +27,6 @@ import InterviewResult from "../pages/interview/InterviewResult";
 function AppRoutes() {
   const location = useLocation();
 
-  // Hide Navbar on protected pages
   const hideNavbar = [
     "/login",
     "/signup",
@@ -38,6 +39,7 @@ function AppRoutes() {
     "/interview/setup",
     "/interview/room",
     "/interview/result",
+    "/settings",
   ].includes(location.pathname);
 
   return (
@@ -45,15 +47,13 @@ function AppRoutes() {
       {!hideNavbar && <Navbar />}
 
       <Routes>
-        {/* Default */}
+        {/* Default Route */}
         <Route path="/" element={<Navigate to="/login" replace />} />
 
-        {/* ================= Public Pages ================= */}
+        {/* Public Pages */}
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-
-        {/* ================= Protected Pages ================= */}
 
         {/* Dashboard */}
         <Route
@@ -95,7 +95,7 @@ function AppRoutes() {
           }
         />
 
-        {/* ================= Coding Practice ================= */}
+        {/* Coding Practice */}
         <Route
           path="/coding"
           element={
@@ -105,8 +105,7 @@ function AppRoutes() {
           }
         />
 
-        {/* ================= Interview ================= */}
-
+        {/* AI Interview */}
         <Route
           path="/interview"
           element={
@@ -116,6 +115,7 @@ function AppRoutes() {
           }
         />
 
+        {/* Interview Setup */}
         <Route
           path="/interview/setup"
           element={
@@ -125,6 +125,7 @@ function AppRoutes() {
           }
         />
 
+        {/* Interview Room */}
         <Route
           path="/interview/room"
           element={
@@ -134,6 +135,7 @@ function AppRoutes() {
           }
         />
 
+        {/* Interview Result */}
         <Route
           path="/interview/result"
           element={
@@ -143,7 +145,17 @@ function AppRoutes() {
           }
         />
 
-        {/* ================= 404 ================= */}
+        {/* Settings */}
+        <Route
+          path="/settings"
+          element={
+            <ProtectedLayout>
+              <Settings />
+            </ProtectedLayout>
+          }
+        />
+
+        {/* 404 */}
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </>
@@ -151,3 +163,4 @@ function AppRoutes() {
 }
 
 export default AppRoutes;
+
