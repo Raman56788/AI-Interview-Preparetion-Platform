@@ -1,6 +1,9 @@
 {
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "bcryptjs": "^3.0.3",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.9.3",
     "recharts": "^3.10.0",
     "tailwindcss": "^4.3.3"
   }
